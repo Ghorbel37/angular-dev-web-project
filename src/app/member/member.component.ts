@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-member',
+  templateUrl: './member.component.html',
+  styleUrls: ['./member.component.css']
+})
+export class MemberComponent {
+  dataSource : any[] = [
+    {id:'1',cin:'12345678',name:'John',type:'teacher',cv:'lien',createdDate:'12/25/2025'},
+    {id:'3',cin:'12335648',name:'John',type:'teacher',cv:'lien',createdDate:'12/25/2025'},
+    {id:'2',cin:'12345652',name:'John',type:'teacher',cv:'lien',createdDate:'12/25/2025'}
+  ];
+}
