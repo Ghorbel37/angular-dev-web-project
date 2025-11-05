@@ -1,18 +1,46 @@
-<table border="1px">
-    <tr>
-        <th>ID</th>
-        <th>Cin</th>
-        <th>Name</th>
-        <th>Type</th>
-        <th>CV</th>
-        <th>Created Date</th>
-    </tr>
-    <tr *ngFor="let element of dataSource">
-        <td>{{element.id}}</td>
-        <td>{{element.cin}}</td>
-        <td>{{element.name}}</td>
-        <td>{{element.type}}</td>
-        <td>{{element.cv}}</td>
-        <td>{{element.createdDate}}</td>
-    </tr>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Cin Column -->
+  <ng-container matColumnDef="cin">
+    <th mat-header-cell *matHeaderCellDef> Cin </th>
+    <td mat-cell *matCellDef="let element"> {{element.cin}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Type Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+    <!-- CV Column -->
+  <ng-container matColumnDef="cv">
+    <th mat-header-cell *matHeaderCellDef> CV </th>
+    <td mat-cell *matCellDef="let element"> {{element.cv}} </td>
+  </ng-container>
+
+    <!-- Created Date Column -->
+  <ng-container matColumnDef="createdDate">
+    <th mat-header-cell *matHeaderCellDef> Created Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+
