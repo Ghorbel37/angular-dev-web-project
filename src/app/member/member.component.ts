@@ -13,7 +13,7 @@ export class MemberComponent implements OnInit {
   constructor(private memberService: MemberService) { }
 
   dataSource : any[] = [];
-  displayedColumns: string[] = ['id', 'cin', 'name', 'type', 'cv', 'createdDate'];
+  displayedColumns: string[] = ['id', 'cin', 'name', 'type', 'cv', 'createdDate', 'action'];
 
   ngOnInit(){
     this.memberService.getAllMembers().subscribe((res)=>{
