@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Member } from 'src/models/Member';
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +13,9 @@ export class MemberService {
   //CRUD sur les membres
   getAllMembers(): Observable<any[]> {
     return this.httpClient.get<any[]>('http://localhost:3000/members');
+  }
+
+  saveMember(member: Member): Observable<void> {
+    return this.httpClient.post<void>('http://localhost:3000/members', member)
   }
 }
