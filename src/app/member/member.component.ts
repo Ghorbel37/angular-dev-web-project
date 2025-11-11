@@ -20,6 +20,15 @@ export class MemberComponent implements OnInit {
       this.dataSource=res;
     })
   }
+
+  delete(id : string){
+    this.memberService.deleteMember(id)
+    .subscribe(()=>{
+      this.memberService.getAllMembers().subscribe((res)=>{
+        this.dataSource=res;
+      })
+    })
+  }
   
  
 }
