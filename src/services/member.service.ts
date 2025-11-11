@@ -18,4 +18,8 @@ export class MemberService {
   saveMember(member: Member): Observable<void> {
     return this.httpClient.post<void>('http://localhost:3000/members', member)
   }
+
+  deleteMember(id: string): Observable<void> {
+    return this.httpClient.delete<void>(`http://localhost:3000/members/${id}`)
+  }
 }
