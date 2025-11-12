@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="sub()">
+<form [formGroup]="form" *ngIf="form" (ngSubmit)="sub()">
     <mat-form-field appearance="fill">
         <input matInput placeholder="Cin" formControlName="cin">
     </mat-form-field>
