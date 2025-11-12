@@ -15,13 +15,19 @@ import { MemberFormComponent } from './member-form/member-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
+import { TemplateComponent } from './template/template.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MemberComponent,
     MemberFormComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    TemplateComponent
   ],
   imports: [
     HttpClientModule,
@@ -35,7 +41,11 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
