@@ -15,6 +15,10 @@ export class MemberService {
     return this.httpClient.get<any[]>('http://localhost:3000/members');
   }
 
+  getMemberById(id: string): Observable<Member> {
+    return this.httpClient.get<Member>(`http://localhost:3000/members/${id}`);
+  }
+
   saveMember(member: Member): Observable<void> {
     return this.httpClient.post<void>('http://localhost:3000/members', member)
   }
@@ -23,7 +27,7 @@ export class MemberService {
     return this.httpClient.delete<void>(`http://localhost:3000/members/${id}`)
   }
 
-  updateMember(member: Member): Observable<void> {
-    return this.httpClient.put<void>(`http://localhost:3000/members/${member.id}`, member)
+  updateMember(id: string, member: Member): Observable<void> {
+    return this.httpClient.put<void>(`http://localhost:3000/members/${id}`, member)
   }
 }
