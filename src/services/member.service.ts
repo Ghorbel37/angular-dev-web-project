@@ -22,4 +22,8 @@ export class MemberService {
   deleteMember(id: string): Observable<void> {
     return this.httpClient.delete<void>(`http://localhost:3000/members/${id}`)
   }
+
+  updateMember(member: Member): Observable<void> {
+    return this.httpClient.put<void>(`http://localhost:3000/members/${member.id}`, member)
+  }
 }
