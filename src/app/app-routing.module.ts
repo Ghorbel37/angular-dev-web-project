@@ -5,6 +5,7 @@ import { MemberComponent } from './member/member.component';
 
 const routes: Routes = [
   { path: 'create', pathMatch:'full', component: MemberFormComponent },
+  { path: 'edit/:id', pathMatch:'full', component: MemberFormComponent },
   { path: '', component: MemberComponent},
   { path: '**', component: MemberComponent }
 ];
