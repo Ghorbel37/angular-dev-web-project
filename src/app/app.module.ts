@@ -20,6 +20,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { TemplateComponent } from './template/template.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { firebaseConfig } from './environment';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
   declarations: [
@@ -27,9 +31,12 @@ import { TemplateComponent } from './template/template.component';
     MemberComponent,
     MemberFormComponent,
     ConfirmDialogComponent,
-    TemplateComponent
+    TemplateComponent,
+    LoginComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
