@@ -22,6 +22,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { TemplateComponent } from './template/template.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 import { firebaseConfig } from './environment';
 import { LoginComponent } from './login/login.component';
 import { EventComponent } from './event/event.component'
@@ -54,7 +56,9 @@ import { EventComponent } from './event/event.component'
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
