@@ -23,7 +23,8 @@ import { TemplateComponent } from './template/template.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { firebaseConfig } from './environment';
-import { LoginComponent } from './login/login.component'
+import { LoginComponent } from './login/login.component';
+import { EventComponent } from './event/event.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoginComponent } from './login/login.component'
     MemberFormComponent,
     ConfirmDialogComponent,
     TemplateComponent,
-    LoginComponent
+    LoginComponent,
+    EventComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
