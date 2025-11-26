@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class EventComponent implements AfterViewInit{
   dataSource: MatTableDataSource<Evnt>= new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'title', 'date', 'location'];
+  displayedColumns: string[] = ['id', 'title', 'dateDebut','dateFin', 'location'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

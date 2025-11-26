@@ -1,6 +1,7 @@
 export interface Evnt {
     id: string,
     title: string,
-    date: string,
+    dateDebut: string,
+    dateFin: string,
     location: string
 }

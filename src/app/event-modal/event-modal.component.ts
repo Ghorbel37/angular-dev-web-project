@@ -17,7 +17,8 @@ export class EventModalComponent {
     private dialog: MatDialog) {
     this.form = new FormGroup({
       title: new FormControl(null),
-      date: new FormControl(null),
+      dateDebut: new FormControl(null),
+      dateFin: new FormControl(null),
       location: new FormControl(null),
     });
   }
