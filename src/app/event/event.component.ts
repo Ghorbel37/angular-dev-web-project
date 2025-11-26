@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Evnt } from 'src/models/Event';
 import { EventService } from 'src/services/event.service';
+import { EventModalComponent } from '../event-modal/event-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-event',
@@ -18,7 +20,7 @@ export class EventComponent implements AfterViewInit{
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private es: EventService) {
+  constructor(private es: EventService, private dialog: MatDialog) {
     this.es.getAllEvents().subscribe(data => {
       this.dataSource.data = data;
     });
@@ -27,6 +29,19 @@ export class EventComponent implements AfterViewInit{
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  openAddEventModal() {
+    //Lancer la boite event-modal
+    this.dialog.open(EventModalComponent).afterClosed().subscribe(EvtRecupere => {
+      if (EvtRecupere) {
+        this.es.saveEvent(EvtRecupere).subscribe(()=>{
+          this.es.getAllEvents().subscribe(data => {
+            this.dataSource.data = data;
+          });
+        });
+      }
+    });
   }
 
    applyFilter(event: Event) {
