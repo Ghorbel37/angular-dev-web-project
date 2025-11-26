@@ -6,9 +6,16 @@
         <input matInput placeholder="Title" formControlName="title">
     </mat-form-field>
 
-    <mat-form-field>
-        <input matInput placeholder="Date" formControlName="date">
-    </mat-form-field>
+<mat-form-field>
+  <mat-label>Enter a date range</mat-label>
+  <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+    <input matStartDate placeholder="Start date" formControlName="dateDebut">
+    <input matEndDate placeholder="End date" formControlName="dateFin">
+  </mat-date-range-input>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field>
+
     
     <mat-form-field>
         <input matInput placeholder="Location" formControlName="location">

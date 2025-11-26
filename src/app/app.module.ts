@@ -27,7 +27,9 @@ import {MatSortModule} from '@angular/material/sort';
 import { firebaseConfig } from './environment';
 import { LoginComponent } from './login/login.component';
 import { EventComponent } from './event/event.component';
-import { EventModalComponent } from './event-modal/event-modal.component'
+import { EventModalComponent } from './event-modal/event-modal.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { EventModalComponent } from './event-modal/event-modal.component'
     MatListModule,
     MatMenuModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
