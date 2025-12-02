@@ -32,7 +32,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -70,8 +69,7 @@ import { MatCardModule } from '@angular/material/card';
     MatSortModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgChartsModule,
-    MatCardModule
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
