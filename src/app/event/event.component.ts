@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Evnt } from 'src/models/Event';
 import { EventService } from 'src/services/event.service';
 import { EventModalComponent } from '../event-modal/event-modal.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-event',
@@ -14,14 +14,14 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class EventComponent implements AfterViewInit{
   dataSource: MatTableDataSource<Evnt>= new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'title', 'dateDebut','dateFin', 'location'];
+  displayedColumns: string[] = ['id', 'title', 'dateDebut','dateFin', 'location', 'action'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private es: EventService, private dialog: MatDialog) {
-    this.es.getAllEvents().subscribe(data => {
+  constructor(private eventService: EventService, private dialog: MatDialog) {
+    this.eventService.getAllEvents().subscribe(data => {
       this.dataSource.data = data;
     });
    }
@@ -35,8 +35,8 @@ export class EventComponent implements AfterViewInit{
     //Lancer la boite event-modal
     this.dialog.open(EventModalComponent).afterClosed().subscribe(EvtRecupere => {
       if (EvtRecupere) {
-        this.es.saveEvent(EvtRecupere).subscribe(()=>{
-          this.es.getAllEvents().subscribe(data => {
+        this.eventService.saveEvent(EvtRecupere).subscribe(()=>{
+          this.eventService.getAllEvents().subscribe(data => {
             this.dataSource.data = data;
           });
         });
@@ -51,5 +51,27 @@ export class EventComponent implements AfterViewInit{
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  deleteEvent(id: any) {
+    this.eventService.deleteEvent(id).subscribe(() => {
+      this.eventService.getAllEvents().subscribe(data => {
+        this.dataSource.data = data;
+      });
+    });
+  }
+
+  openEditEventModal(idEvent: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = idEvent;
+    let dialogRef = this.dialog.open(EventModalComponent, dialogConfig).afterClosed().subscribe(EvtRecupere => {
+      if (EvtRecupere) {
+        this.eventService.updateEvent(idEvent, EvtRecupere).subscribe(()=>{
+          this.eventService.getAllEvents().subscribe(data => {
+            this.dataSource.data = data;
+          });
+        });
+      }
+    });
   }
 }
