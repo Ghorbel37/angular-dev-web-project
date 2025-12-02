@@ -31,6 +31,7 @@ import { EventModalComponent } from './event-modal/event-modal.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgChartsModule } from 'ng2-charts';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { NgChartsModule } from 'ng2-charts';
     TemplateComponent,
     LoginComponent,
     EventComponent,
-    EventModalComponent
+    EventModalComponent,
+    DashboardComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
