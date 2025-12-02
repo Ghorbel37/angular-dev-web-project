@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Evnt } from 'src/models/Event';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class EventService {
       return this.httpClient.get<any[]>('http://localhost:3000/events');
     }
   
-    getEventById(id: string): Observable<Event> {
-      return this.httpClient.get<Event>(`http://localhost:3000/events/${id}`);
+    getEventById(id: string): Observable<Evnt> {
+      return this.httpClient.get<Evnt>(`http://localhost:3000/events/${id}`);
     }
   
     saveEvent(event: Event): Observable<void> {
@@ -26,7 +27,7 @@ export class EventService {
       return this.httpClient.delete<void>(`http://localhost:3000/events/${id}`)
     }
   
-    updateEvent(id: string, event: Event): Observable<void> {
+    updateEvent(id: string, event: Evnt): Observable<void> {
       return this.httpClient.put<void>(`http://localhost:3000/events/${id}`, event)
     }
 }
