@@ -1,0 +1,23 @@
+.cards-center {
+  display: flex;
+  justify-content: center; /* centers the cards */
+  gap: 16px;               /* space between cards */
+  flex-wrap: wrap;         /* optional: wrap on small screens */
+}
+
+mat-card {
+  text-align: center;
+  width: 250px;
+}
+
+.charts-container {
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  align-items: center;
+  gap: 50px;                 /* spacing between charts */
+}
+
+.chart-wrapper {
+  width: 500px;              /* adjust chart size */
+  height: 500px;
+}
