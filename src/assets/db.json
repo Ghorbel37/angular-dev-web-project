@@ -1,48 +1,58 @@
 {
-    "members": [
-        {
-            "id": 1,
-            "cin": "12345678",
-            "name": "John",
-            "type": "teacher",
-            "cv": "lien",
-            "createdDate": "12/25/2025"
-        },
-        {
-            "id": 3,
-            "cin": "12335648",
-            "name": "John",
-            "type": "teacher",
-            "cv": "lien",
-            "createdDate": "12/25/2025"
-        },
-        {
-            "id": 2,
-            "cin": "12345652",
-            "name": "John",
-            "type": "teacher",
-            "cv": "lien",
-            "createdDate": "12/25/2025"
-        }
-    ],
-    "events":[
-        {
-            "id": "1",
-            "title": "Event 1",
-            "date": "2023-10-01",
-            "location": "Location 1"
-        },
-        {
-            "id": "2",
-            "title": "Event 2",
-            "date": "2023-11-15",
-            "location": "Location 2"
-        },
-        {
-            "id": "3",
-            "title": "Event 3",
-            "date": "2023-12-05",
-            "location": "Location 3"
-        }
-    ]
+  "members": [
+    {
+      "id": "1",
+      "cin": "12345678",
+      "name": "John",
+      "type": "teacher",
+      "cv": "lien",
+      "createdDate": "12/25/2025"
+    },
+    {
+      "id": "3",
+      "cin": "12335648",
+      "name": "John",
+      "type": "teacher",
+      "cv": "lien",
+      "createdDate": "12/25/2025"
+    },
+    {
+      "id": "2",
+      "cin": "12345652",
+      "name": "John",
+      "type": "teacher",
+      "cv": "lien",
+      "createdDate": "12/25/2025"
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "title": "Event 1",
+      "dateDebut": "2023-10-01",
+      "dateFin": "2023-10-02",
+      "location": "Location 1"
+    },
+    {
+      "id": "2",
+      "title": "Event 2",
+      "dateDebut": "2023-11-15",
+      "dateFin": "2023-11-16",
+      "location": "Location 2"
+    },
+    {
+      "id": "3",
+      "title": "Event 3",
+      "dateDebut": "2023-12-05",
+      "dateFin": "2023-12-10",
+      "location": "Location 3"
+    },
+    {
+      "id": "2f77",
+      "title": "Hello",
+      "dateDebut": "2023-10-03",
+      "dateFin": "2023-10-04",
+      "location": "Sf"
+    }
+  ]
 }
