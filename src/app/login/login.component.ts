@@ -12,10 +12,14 @@ export class LoginComponent {
 
   email: string = '';
   password: string = '';
+  errorMessage: string = '';
 
   login() {
-    this.authService.signInWithEmailAndPassword(this.email, this.password).then(()=>{
-      this.router.navigate(['/member'])
+    this.authService.signInWithEmailAndPassword(this.email, this.password).then(() => {
+      this.router.navigate(['/member']);
+      this.errorMessage = '';
+    }).catch((error) => {
+      this.errorMessage = error.message;
     });
   }
 }
