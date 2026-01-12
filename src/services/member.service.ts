@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/app/environment';
 import { Member } from 'src/models/Member';
 import { Publication } from 'src/models/Publication';
+import { Evnt } from 'src/models/Event';
+import { Tool } from 'src/models/Tool';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +42,32 @@ export class MemberService {
   // Remove publication association from member
   removePublicationFromMember(memberId: string, publicationId: string): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/membres/${memberId}/publications/${publicationId}`);
+  }
+
+  // Member-specific events
+  getMemberEvents(id: string): Observable<Evnt[]> {
+    return this.httpClient.get<Evnt[]>(`${this.apiUrl}/membres/${id}/evenements`);
+  }
+
+  addEventToMember(memberId: string, eventId: string): Observable<void> {
+    return this.httpClient.post<void>(`${this.apiUrl}/membres/${memberId}/evenements/${eventId}`, {});
+  }
+
+  removeEventFromMember(memberId: string, eventId: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/membres/${memberId}/evenements/${eventId}`);
+  }
+
+  // Member-specific tools
+  getMemberTools(id: string): Observable<Tool[]> {
+    return this.httpClient.get<Tool[]>(`${this.apiUrl}/membres/${id}/outils`);
+  }
+
+  addToolToMember(memberId: string, toolId: string): Observable<void> {
+    return this.httpClient.post<void>(`${this.apiUrl}/membres/${memberId}/outils/${toolId}`, {});
+  }
+
+  removeToolFromMember(memberId: string, toolId: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/membres/${memberId}/outils/${toolId}`);
   }
 
   saveMember(member: Member): Observable<void> {
