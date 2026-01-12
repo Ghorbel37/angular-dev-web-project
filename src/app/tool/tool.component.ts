@@ -6,6 +6,7 @@ import { Tool } from 'src/models/Tool';
 import { ToolService } from 'src/services/tool.service';
 import { ToolModalComponent } from '../tool-modal/tool-modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-tool',
@@ -52,10 +53,18 @@ export class ToolComponent implements AfterViewInit{
   }
 
   deleteTool(id: any) {
-    this.toolService.deleteTool(id).subscribe(() => {
-      this.toolService.getAllTools().subscribe(data => {
-        this.dataSource.data = data;
-      });
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      height: '210px',
+      width: '300px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.toolService.deleteTool(id).subscribe(() => {
+          this.toolService.getAllTools().subscribe(data => {
+            this.dataSource.data = data;
+          });
+        });
+      }
     });
   }
 
