@@ -1,0 +1,71 @@
+<style>
+  /* Simple, local styles for member publications dialog */
+  .card { max-width: 900px; margin: 12px auto; padding: 16px; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); background: #fff; }
+  .header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+  .header h2 { margin:0; font-size:18px; }
+  .muted { color:#666; font-size:13px; }
+  .table-wrap { overflow:auto; border-radius:6px; }
+  .controls { display:flex; gap:8px; align-items:center; margin-top:12px; flex-wrap:wrap; }
+  .controls .right { margin-left:auto; display:flex; gap:8px; align-items:center; }
+  .table-actions button { min-width:64px; }
+  @media (max-width:640px){ .card{ padding:12px; } .controls{ flex-direction:column; align-items:stretch; } .controls .right{ margin-left:0; justify-content:flex-end; }
+  }
+</style>
+
+<div class="card">
+  <div class="header">
+    <h2>Publications for {{memberName}}</h2>
+    <div class="muted" *ngIf="isLoading">Loading…</div>
+  </div>
+
+  <div class="table-wrap">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width:100%;">
+
+      <!-- Titre Column -->
+      <ng-container matColumnDef="titre">
+        <th mat-header-cell *matHeaderCellDef> Titre </th>
+        <td mat-cell *matCellDef="let element"> {{element.titre}} </td>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="dateApparition">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateApparition | date}} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element" class="table-actions"> 
+          <button mat-stroked-button color="warn" (click)="deletePublication(element.id)" [disabled]="isProcessing">Remove</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <div class="controls">
+    <mat-form-field appearance="fill" style="min-width:240px; flex:1 1 240px;">
+      <mat-label>Select existing publication</mat-label>
+      <mat-select [(value)]="selectedExistingPublicationId" [disabled]="isLoading || isProcessing">
+        <mat-option [value]="null">-- choose --</mat-option>
+        <mat-option *ngFor="let p of availablePublications" [value]="p.id">{{p.titre}} ({{p.type}})</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" (click)="attachExistingPublication()" [disabled]="!selectedExistingPublicationId || isProcessing">Attach</button>
+
+    <div class="right">
+      <button mat-flat-button color="accent" (click)="gotoArticles()" [disabled]="isProcessing">Go to articles</button>
+      <button mat-button (click)="close()" [disabled]="isProcessing">Close</button>
+    </div>
+  </div>
+</div>
