@@ -35,6 +35,8 @@ import { NgChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ToolComponent } from './tool/tool.component';
 import { ToolModalComponent } from './tool-modal/tool-modal.component';
 import { PublicationComponent } from './publication/publication.component';
@@ -94,7 +96,9 @@ import { MemberToolModalComponent } from './member-tool-modal/member-tool-modal.
     MatOptionModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
