@@ -40,6 +40,7 @@ import { PublicationComponent } from './publication/publication.component';
 import { PublicationModalComponent } from './publication-modal/publication-modal.component';
 import { MemberPublicationsModalComponent } from './member-publications-modal/member-publications-modal.component';
 import { MemberEncadrantModalComponent } from './member-encadrant-modal/member-encadrant-modal.component';
+import { MemberEventModalComponent } from './member-event-modal/member-event-modal.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { MemberEncadrantModalComponent } from './member-encadrant-modal/member-e
     PublicationComponent,
     PublicationModalComponent,
     MemberPublicationsModalComponent,
-    MemberEncadrantModalComponent
+    MemberEncadrantModalComponent,
+    MemberEventModalComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
