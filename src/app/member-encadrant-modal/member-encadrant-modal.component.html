@@ -1,0 +1,22 @@
+<div style="display:flex; align-items:center; justify-content:center; min-width:320px;">
+  <div style="width:100%; max-width:520px; padding:20px; border-radius:8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); background:#fff;">
+    <h2 style="margin:0 0 12px; font-size:20px;">Assign Encadrant</h2>
+
+    <div *ngIf="student">
+      <p style="margin:0 0 12px;"><strong>Student:</strong> {{student.nom}} {{student.prenom}}</p>
+
+      <mat-form-field appearance="fill" style="width:100%;">
+        <mat-label>Encadrant</mat-label>
+        <mat-select [(value)]="selectedEncadrantId">
+          <mat-option [value]="null">None</mat-option>
+          <mat-option *ngFor="let e of enseignants" [value]="e.id">{{e.nom}} {{e.prenom}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div style="margin-top:16px; display:flex; gap:8px; justify-content:flex-end;">
+        <button mat-stroked-button color="primary" (click)="save()">Save</button>
+        <button mat-button (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

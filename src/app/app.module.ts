@@ -38,6 +38,8 @@ import { ToolComponent } from './tool/tool.component';
 import { ToolModalComponent } from './tool-modal/tool-modal.component';
 import { PublicationComponent } from './publication/publication.component';
 import { PublicationModalComponent } from './publication-modal/publication-modal.component';
+import { MemberPublicationsModalComponent } from './member-publications-modal/member-publications-modal.component';
+import { MemberEncadrantModalComponent } from './member-encadrant-modal/member-encadrant-modal.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { PublicationModalComponent } from './publication-modal/publication-modal
     ToolComponent,
     ToolModalComponent,
     PublicationComponent,
-    PublicationModalComponent
+    PublicationModalComponent,
+    MemberPublicationsModalComponent,
+    MemberEncadrantModalComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
