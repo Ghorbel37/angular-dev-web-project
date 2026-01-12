@@ -33,6 +33,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatCardModule } from '@angular/material/card';
+import { ToolComponent } from './tool/tool.component';
+import { ToolModalComponent } from './tool-modal/tool-modal.component';
+import { ArticleComponent } from './article/article.component';
+import { ArticleModalComponent } from './article-modal/article-modal.component';
 
 
 @NgModule({
@@ -45,7 +49,11 @@ import { MatCardModule } from '@angular/material/card';
     LoginComponent,
     EventComponent,
     EventModalComponent,
-    DashboardComponent
+    DashboardComponent,
+    ToolComponent,
+    ToolModalComponent,
+    ArticleComponent,
+    ArticleModalComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
