@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/app/environment';
 import { Member } from 'src/models/Member';
+import { Publication } from 'src/models/Publication';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,26 @@ export class MemberService {
 
   getMemberById(id: string): Observable<Member> {
     return this.httpClient.get<Member>(`${this.apiUrl}/membres/${id}`);
+  }
+
+  // fetch member with publications included
+  getFullMember(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/fullmember/${id}`);
+  }
+
+  // Member-specific publications
+  getMemberPublications(id: string): Observable<Publication[]> {
+    return this.httpClient.get<Publication[]>(`${this.apiUrl}/membres/${id}/publications`);
+  }
+
+  // Associate an existing publication to a member
+  addPublicationToMember(memberId: string, publicationId: string): Observable<void> {
+    return this.httpClient.post<void>(`${this.apiUrl}/membres/${memberId}/publications/${publicationId}`, {});
+  }
+
+  // Remove publication association from member
+  removePublicationFromMember(memberId: string, publicationId: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/membres/${memberId}/publications/${publicationId}`);
   }
 
   saveMember(member: Member): Observable<void> {
