@@ -34,6 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ToolComponent } from './tool/tool.component';
 import { ToolModalComponent } from './tool-modal/tool-modal.component';
 import { PublicationComponent } from './publication/publication.component';
@@ -89,6 +90,7 @@ import { MemberToolModalComponent } from './member-tool-modal/member-tool-modal.
     MatNativeDateModule,
     NgChartsModule,
     MatCardModule,
+    MatTooltipModule,
     MatOptionModule,
     MatSelectModule
   ],
