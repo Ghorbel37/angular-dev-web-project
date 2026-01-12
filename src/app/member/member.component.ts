@@ -27,7 +27,7 @@ export class MemberComponent implements OnInit {
     // 1. Lancer la boite
     let dialogRef = this.dialog.open(ConfirmDialogComponent,
       {
-      height: '210px',
+      height: '220px',
       width: '300px'
     })
     // 2. Attendre le resultat de user

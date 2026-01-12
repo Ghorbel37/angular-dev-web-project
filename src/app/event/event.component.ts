@@ -56,7 +56,7 @@ export class EventComponent implements AfterViewInit{
 
   deleteEvent(id: any) {
     let dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      height: '230px',
+      height: '220px',
       width: '300px'
     });
     dialogRef.afterClosed().subscribe(result => {

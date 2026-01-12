@@ -54,7 +54,7 @@ export class ToolComponent implements AfterViewInit{
 
   deleteTool(id: any) {
     let dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      height: '210px',
+      height: '220px',
       width: '300px'
     });
     dialogRef.afterClosed().subscribe(result => {
