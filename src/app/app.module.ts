@@ -35,8 +35,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatCardModule } from '@angular/material/card';
 import { ToolComponent } from './tool/tool.component';
 import { ToolModalComponent } from './tool-modal/tool-modal.component';
-import { ArticleComponent } from './article/article.component';
-import { ArticleModalComponent } from './article-modal/article-modal.component';
+import { PublicationComponent } from './publication/publication.component';
+import { PublicationModalComponent } from './publication-modal/publication-modal.component';
 
 
 @NgModule({
@@ -52,8 +52,8 @@ import { ArticleModalComponent } from './article-modal/article-modal.component';
     DashboardComponent,
     ToolComponent,
     ToolModalComponent,
-    ArticleComponent,
-    ArticleModalComponent
+    PublicationComponent,
+    PublicationModalComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
