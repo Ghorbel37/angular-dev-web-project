@@ -29,7 +29,8 @@ import { LoginComponent } from './login/login.component';
 import { EventComponent } from './event/event.component';
 import { EventModalComponent } from './event-modal/event-modal.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 import { NgChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatCardModule } from '@angular/material/card';
@@ -79,7 +80,9 @@ import { PublicationModalComponent } from './publication-modal/publication-modal
     MatDatepickerModule,
     MatNativeDateModule,
     NgChartsModule,
-    MatCardModule
+    MatCardModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
