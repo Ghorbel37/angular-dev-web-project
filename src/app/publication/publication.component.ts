@@ -6,6 +6,7 @@ import { Publication } from 'src/models/Publication';
 import { PublicationService } from 'src/services/publication.service';
 import { PublicationModalComponent } from '../publication-modal/publication-modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-publication',
@@ -51,11 +52,19 @@ export class PublicationComponent implements AfterViewInit{
     }
   }
 
-  deletePublication(id: any) {
-    this.publicationService.deletePublication(id).subscribe(() => {
-      this.publicationService.getAllPublications().subscribe(data => {
-        this.dataSource.data = data;
-      });
+  deletePublication(id: any){
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      height: '220px',
+      width: '300px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.publicationService.deletePublication(id).subscribe(() => {
+          this.publicationService.getAllPublications().subscribe(data => {
+            this.dataSource.data = data;
+          });
+        });
+      }
     });
   }
 

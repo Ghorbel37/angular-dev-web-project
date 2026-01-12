@@ -6,6 +6,7 @@ import { Evnt } from 'src/models/Event';
 import { EventService } from 'src/services/event.service';
 import { EventModalComponent } from '../event-modal/event-modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-event',
@@ -54,10 +55,18 @@ export class EventComponent implements AfterViewInit{
   }
 
   deleteEvent(id: any) {
-    this.eventService.deleteEvent(id).subscribe(() => {
-      this.eventService.getAllEvents().subscribe(data => {
-        this.dataSource.data = data;
-      });
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      height: '230px',
+      width: '300px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.eventService.deleteEvent(id).subscribe(() => {
+          this.eventService.getAllEvents().subscribe(data => {
+            this.dataSource.data = data;
+          });
+        });
+      }
     });
   }
 
