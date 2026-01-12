@@ -1,1 +1,20 @@
-<p>tool-modal works!</p>
+<h2 mat-dialog-title>Add Tool</h2>
+
+<mat-dialog-content [formGroup]="form" *ngIf="form">
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Source" formControlName="source">
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="close()">Close</button>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>
