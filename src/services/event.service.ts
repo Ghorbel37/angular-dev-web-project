@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/app/environment';
 import { Evnt } from 'src/models/Event';
 
 @Injectable({
@@ -8,26 +10,31 @@ import { Evnt } from 'src/models/Event';
 })
 export class EventService {
 
+  apiUrl = `${environment.apiUrl}/${environment.eventApi}`;
   constructor(private httpClient: HttpClient) { }
 
-  //CRUD sur les membres
-    getAllEvents(): Observable<any[]> {
-      return this.httpClient.get<any[]>('http://localhost:3000/events');
+  //CRUD sur les evenements
+    getAllEvents(): Observable<Evnt[]> {
+      return this.httpClient
+      .get<{ _embedded?: { evenements?: Evnt[] } }>(`${this.apiUrl}/evenements`)
+      .pipe(
+        map(res => Array.isArray(res) ? (res as unknown as Evnt[]) : (res._embedded?.evenements ?? []))
+      );
     }
   
     getEventById(id: string): Observable<Evnt> {
-      return this.httpClient.get<Evnt>(`http://localhost:3000/events/${id}`);
+      return this.httpClient.get<Evnt>(`${this.apiUrl}/evenements/${id}`);
     }
   
     saveEvent(event: Event): Observable<void> {
-      return this.httpClient.post<void>('http://localhost:3000/events', event)
+      return this.httpClient.post<void>(`${this.apiUrl}/evenements`, event)
     }
   
     deleteEvent(id: string): Observable<void> {
-      return this.httpClient.delete<void>(`http://localhost:3000/events/${id}`)
+      return this.httpClient.delete<void>(`${this.apiUrl}/evenements/${id}`)
     }
   
     updateEvent(id: string, event: Evnt): Observable<void> {
-      return this.httpClient.put<void>(`http://localhost:3000/events/${id}`, event)
+      return this.httpClient.put<void>(`${this.apiUrl}/evenements/${id}`, event)
     }
 }
