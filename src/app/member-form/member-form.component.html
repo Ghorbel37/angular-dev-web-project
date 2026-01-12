@@ -1,23 +1,83 @@
 <form [formGroup]="form" *ngIf="form" (ngSubmit)="sub()">
+  <mat-form-field appearance="fill">
+    <mat-label>Type</mat-label>
+    <mat-select formControlName="type">
+      <mat-option value="Etudiant">Etudiant</mat-option>
+      <mat-option value="Enseignant">Enseignant</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput placeholder="CIN" formControlName="cin">
+    <mat-error *ngIf="form.get('cin')?.hasError('required')">CIN is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput placeholder="Nom" formControlName="nom">
+    <mat-error *ngIf="form.get('nom')?.hasError('required')">Nom is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput placeholder="Prénom" formControlName="prenom">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="dateCreated">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput placeholder="Email" formControlName="email">
+    <mat-error *ngIf="form.get('email')?.hasError('email')">Invalid email</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput type="password" placeholder="Password" formControlName="password">
+  </mat-form-field>
+
+  <!-- Enseignant specific -->
+  <div *ngIf="form.get('type')?.value === 'Enseignant'">
     <mat-form-field appearance="fill">
-        <input matInput placeholder="Cin" formControlName="cin">
+      <input matInput placeholder="Grade" formControlName="grade">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-        <input matInput placeholder="Name" formControlName="name">
+      <input matInput placeholder="Etablissement" formControlName="etablissement">
+    </mat-form-field>
+  </div>
+
+  <!-- Etudiant specific -->
+  <div *ngIf="form.get('type')?.value === 'Etudiant'">
+    <mat-form-field appearance="fill">
+      <input matInput [matDatepicker]="insPicker" placeholder="Date d'inscription" formControlName="dateInscription">
+      <mat-datepicker-toggle matSuffix [for]="insPicker"></mat-datepicker-toggle>
+      <mat-datepicker #insPicker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-        <input matInput placeholder="CV" formControlName="cv">
+      <input matInput placeholder="Diplome" formControlName="diplome">
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <input matInput placeholder="Type" formControlName="type">
-    </mat-form-field>
+  </div>
 
-    <mat-form-field appearance="fill">
-        <input matInput placeholder="Created date" formControlName="createdDate">
-    </mat-form-field>
+  <mat-form-field appearance="fill">
+    <input matInput placeholder="CV" formControlName="cv">
+  </mat-form-field>
 
+  <div>
+    <label>Photo (optional)</label>
+    <div style="display:flex; align-items:center; gap:8px; margin-top:6px">
+      <img *ngIf="previewPhotoUrl" [src]="previewPhotoUrl" alt="Preview" width="72" height="72" style="object-fit:cover;border-radius:4px" />
+      <span *ngIf="!previewPhotoUrl" style="display:inline-block;width:72px;height:72px;background:#eee;border-radius:4px;text-align:center;line-height:72px;color:#999">?</span>
+
+      <input #fileInput type="file" (change)="onFileChange($event)" accept="image/*" hidden />
+      <button mat-button color="primary" type="button" (click)="fileInput.click()">Choose image</button>
+      <button mat-button color="warn" *ngIf="newPhotoSelected" type="button" (click)="removeSelectedPhoto()">Remove selected</button>
+    </div>
+  </div>
+
+  <div style="margin-top: 12px">
     <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
 </form>
