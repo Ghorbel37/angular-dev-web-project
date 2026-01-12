@@ -1,3 +1,10 @@
+<style>
+  /* small tweaks to make the layout full-height and tidy */
+  mat-sidenav-container { min-height: 100vh; background: #f5f7fa; }
+  mat-sidenav { background: #fff; border-right: 1px solid rgba(0,0,0,0.06); box-shadow:none; }
+  .mat-sidenav-content { min-height: 100vh; }
+</style>
+
 <mat-sidenav-container>
 
     <!-- The side nav -->
@@ -35,8 +42,7 @@
             <button [matMenuTriggerFor]="userMenu" class="toolbar-button" mat-button
                 style="margin-left: 85%; margin-right: 5%;">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <img class="avatar mr-0 mr-sm-16" style="border-radius: 50px; width: 40px;height: 40px;" />
-                    <mat-icon>account_circle</mat-icon>
+                    <mat-icon style="font-size:26px">account_circle</mat-icon>
                     <span class="username mx-12" fxHide fxShow.gt-sm></span>
                     <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
                 </div>
