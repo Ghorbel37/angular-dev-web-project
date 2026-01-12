@@ -8,6 +8,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MemberPublicationsModalComponent } from '../member-publications-modal/member-publications-modal.component';
 import { MemberEncadrantModalComponent } from '../member-encadrant-modal/member-encadrant-modal.component';
+import { MemberEventModalComponent } from '../member-event-modal/member-event-modal.component';
+import { MemberToolModalComponent } from '../member-tool-modal/member-tool-modal.component';
 
 @Component({
   selector: 'app-member',
@@ -59,6 +61,20 @@ export class MemberComponent implements AfterViewInit {
 
   openPublications(id: any){
     const dialogRef = this.dialog.open(MemberPublicationsModalComponent, { data: { id } });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) this.loadMembers();
+    });
+  }
+
+  openEvents(id: any){
+    const dialogRef = this.dialog.open(MemberEventModalComponent, { data: { id } });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) this.loadMembers();
+    });
+  }
+
+  openTools(id: any){
+    const dialogRef = this.dialog.open(MemberToolModalComponent, { data: { id } });
     dialogRef.afterClosed().subscribe(result => {
       if (result) this.loadMembers();
     });
