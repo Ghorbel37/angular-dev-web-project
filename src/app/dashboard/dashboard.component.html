@@ -24,19 +24,41 @@
 
 <div class="charts-container">
   <div class="chart-wrapper">
+    <h3 style="text-align:center">Nombre des entités</h3>
     <canvas baseChart
-            [type]="'line'"
-            [datasets]="chartData"
-            [labels]="chartLabels"
+            [type]="'bar'"
+            [datasets]="barData"
+            [labels]="barLabels"
             [options]="chartOptions">
     </canvas>
   </div>
 
   <div class="chart-wrapper">
+    <h3 style="text-align:center">Membres par type</h3>
+    <canvas baseChart
+            [type]="'doughnut'"
+            [datasets]="memberTypeData"
+            [labels]="memberTypeLabels"
+            [options]="chartOptions">
+    </canvas>
+  </div>
+
+  <div class="chart-wrapper">
+    <h3 style="text-align:center">Publications par type</h3>
     <canvas baseChart
             [type]="'pie'"
-            [datasets]="chartData"
-            [labels]="chartLabels"
+            [datasets]="publicationTypeData"
+            [labels]="publicationTypeLabels"
+            [options]="chartOptions">
+    </canvas>
+  </div>
+
+  <div class="chart-wrapper">
+    <h3 style="text-align:center">Publications au cours des années</h3>
+    <canvas baseChart
+            [type]="'line'"
+            [datasets]="publicationsData"
+            [labels]="publicationsLabels"
             [options]="chartOptions">
     </canvas>
   </div>
