@@ -6,6 +6,8 @@ import { Member } from 'src/models/Member';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MemberPublicationsModalComponent } from '../member-publications-modal/member-publications-modal.component';
+import { MemberEncadrantModalComponent } from '../member-encadrant-modal/member-encadrant-modal.component';
 
 @Component({
   selector: 'app-member',
@@ -53,5 +55,19 @@ export class MemberComponent implements AfterViewInit {
         })
       }
     })
-  }  
+  }
+
+  openPublications(id: any){
+    const dialogRef = this.dialog.open(MemberPublicationsModalComponent, { data: { id } });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) this.loadMembers();
+    });
+  }
+
+  openEncadrant(id: any){
+    const dialogRef = this.dialog.open(MemberEncadrantModalComponent, { data: { id } });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) this.loadMembers();
+    });
+  }
 }
