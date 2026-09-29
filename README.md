@@ -1,27 +1,63 @@
-# Lab
+# Research Lab Manager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+An Angular web app for managing a research lab: its members, their publications, the events they attend and the tools they use. It was built for a web development course and deployed on Firebase.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Login** with Firebase Authentication (email and password), a route guard and an HTTP interceptor that adds the JWT to API calls
+- **Members:** list, create, edit and delete members, assign supervisors, and link members to publications, events and tools
+- **Publications, events and tools:** list and manage each, with create/edit dialogs
+- **Dashboard** with charts that summarize the lab's data
+- Angular Material interface with confirmation dialogs
 
-## Code scaffolding
+## Tech stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 16, Angular Material
+- Chart.js with ng2-charts for the dashboard
+- Firebase (Authentication and hosting) with AngularFire
+- json-server as a mock backend during development
 
-## Build
+## Backend
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The app talks to a REST API through four services: members, events, publications and tools. During the course it started with **json-server** as a mock backend, using `src/assets/db.json`. The services also understand the Spring Data REST response format (`_embedded`), so they can work with a Spring backend that exposes the same resources.
 
-## Running unit tests
+## Getting started
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Requirements
 
-## Running end-to-end tests
+- Node.js 16 or 18
+- Angular CLI 16 (`npm install -g @angular/cli@16`)
+- A Firebase project with Email/Password sign-in enabled
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Configuration
 
-## Further help
+The configuration file `src/app/environment.ts` is not committed because it contains your Firebase keys. Create it with:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```ts
+export const environment = {
+  apiUrl: 'http://localhost:3000', // base URL of the backend or json-server
+  memberApi: '',                  // path prefix of each service, if any
+  eventApi: '',
+  publicationApi: '',
+  toolApi: '',
+};
+
+export const firebaseConfig = {
+  apiKey: '...',
+  authDomain: '...',
+  projectId: '...',
+  storageBucket: '...',
+  messagingSenderId: '...',
+  appId: '...',
+};
+```
+
+Copy the `firebaseConfig` values from your Firebase project settings.
+
+### Run
+
+```bash
+npm install
+npm run json-server   # mock backend on http://localhost:3000
+ng serve              # app on http://localhost:4200
+```
