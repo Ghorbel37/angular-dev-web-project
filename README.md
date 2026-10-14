@@ -1,6 +1,8 @@
 # Research Lab Manager
 
-An Angular web app for managing a research lab: its members, their publications, the events they attend and the tools they use. It was built for a web development course and deployed on Firebase.
+*Built for a web development course (2025).*
+
+An Angular web app for managing a research lab: its members, their publications, the events they attend and the tools they use. It is deployed on Firebase.
 
 ## Features
 
